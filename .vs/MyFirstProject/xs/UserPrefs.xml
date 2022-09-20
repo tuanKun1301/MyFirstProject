@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{79A912D3-66B9-DDF3-6203-61A74A7F619F}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WordsGrid.cs">
+    <Files>
+      <File FileName="Assets/Scripts/ScriptableObjects/BoardData.cs" Line="13" Column="28" />
+      <File FileName="Assets/Scripts/Editor/BoardDataDrawer.cs" Line="192" Column="1" />
+      <File FileName="Assets/Scripts/GameUtility.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/ScriptableObjects/AlphabetData.cs" Line="20" Column="42" />
+      <File FileName="Assets/Scripts/Editor/AlphabetDataDrawer.cs" Line="33" Column="52" />
+      <File FileName="Assets/Scripts/ScriptableObjects/GameData.cs" Line="10" Column="41" />
+      <File FileName="Assets/Scripts/WordsGrid.cs" Line="16" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MyFirstProject" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Editor" expanded="True" />
+                <Node name="ScriptableObjects" expanded="True" />
+                <Node name="WordsGrid.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4295af29-bf9b-439c-8bc4-10d55d0ab288" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

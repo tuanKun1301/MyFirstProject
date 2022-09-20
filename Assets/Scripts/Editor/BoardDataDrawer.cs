@@ -11,11 +11,11 @@ using UnityEditorInternal;
 public class BoardDataDrawer : Editor
 {
     private BoardData GameDataInstance => target as BoardData;
-    private ReorderableList dataList;
+    private ReorderableList _dataList;
 
     private void OnEnable()
     {
-        InitializeRecordableList(ref dataList, "SearchWords", " Searching Words") ;
+        InitializeRecordableList(ref _dataList, "SearchWords", " Searching Words") ;
     }
 
     public override void OnInspectorGUI()
@@ -24,11 +24,17 @@ public class BoardDataDrawer : Editor
         DrawColumnsRowsInputFields();
         EditorGUILayout.Space();
         ConvertToUpperButton();
+
         if (GameDataInstance.Board != null && GameDataInstance.Columns > 0 && GameDataInstance.Rows > 0)
             DrawBoardTable();
 
+        GUILayout.BeginHorizontal();
+        ClearBoardButton();
+        FillUpWithRandomLettersButton();
+        GUILayout.EndHorizontal();
+
         EditorGUILayout.Space();
-        dataList.DoLayoutList();
+        _dataList.DoLayoutList();
 
         serializedObject.ApplyModifiedProperties();
 
@@ -107,7 +113,7 @@ public class BoardDataDrawer : Editor
         list.drawHeaderCallback = (Rect rect) =>
         {
             EditorGUI.LabelField(rect, listLabel);
-        };
+        };  
         var l = list;
         list.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
         {
@@ -124,7 +130,7 @@ public class BoardDataDrawer : Editor
     {
         if(GUILayout.Button("To Upper"))
         {
-            for( var i =0; i<GameDataInstance.Columns; i++)
+            for( var i = 0; i < GameDataInstance.Columns; i++)
             {
                 for(var j = 0; j < GameDataInstance.Rows; j++)
                 {
@@ -143,6 +149,41 @@ public class BoardDataDrawer : Editor
                 if(errorCounter > 0)
                 {
                     searchWord.Word = searchWord.Word.ToUpper();
+                }
+            }
+        }
+    }
+
+    private void ClearBoardButton()
+    {
+        if(GUILayout.Button("Clear Board"))
+        {
+            for(int i = 0; i < GameDataInstance.Columns; i++)
+            {
+                for(int j = 0; j < GameDataInstance.Rows; j++)
+                {
+                    GameDataInstance.Board[i].Row[j] = " ";
+                }
+            }
+        }
+    }
+
+    private void FillUpWithRandomLettersButton()
+    {
+        if(GUILayout.Button("Fill Up With  Random"))
+        {
+            for (int i = 0; i < GameDataInstance.Columns; i++)
+            {
+                for (int j = 0; j < GameDataInstance.Rows; j++)
+                {
+                    int errorCounter = Regex.Matches(GameDataInstance.Board[i].Row[j], @"[a-zA-Z]").Count;
+                    string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    int index = UnityEngine.Random.Range(0,letters.Length);
+
+                    if (errorCounter == 0)
+                    {
+                        GameDataInstance.Board[i].Row[j] = letters[index].ToString();
+                    }
                 }
             }
         }
